@@ -19,6 +19,7 @@
   "homepage": "https://github.com/f47ih/node-mongo-pjpb#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "google-auth-library": "^7.0.3",
     "mongoose": "^5.12.2"
   }
 }
