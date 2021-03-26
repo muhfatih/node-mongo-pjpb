@@ -2,7 +2,6 @@ const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
 const Laporan = require('./models/laporan')
-const User = require('./models/user')
 const {OAuth2Client} = require('google-auth-library');
 const clientAndroid = new OAuth2Client("864888909882-l3iqtf3947l9nb2s3bgh12gkkat2citv.apps.googleusercontent.com");
 const clientIOS = new OAuth2Client("864888909882-52dg581j3mac0l5oigutmfscndpdc95a.apps.googleusercontent.com");
