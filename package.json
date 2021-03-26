@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/f47ih/node-mongo-pjpb#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "google-auth-library": "^7.0.3",
     "mongoose": "^5.12.2"
