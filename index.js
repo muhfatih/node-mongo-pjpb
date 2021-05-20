@@ -13,7 +13,7 @@ const mongoDB = process.env.MONGO_URI
 mongoose.connect(mongoDB, {useNewUrlParser: true, useUnifiedTopology: true})
 .then((res)=>{
     console.log(res)
-    app.listen(3000)
+    app.listen(process.env.PORT)
 })
 
 async function verify(token,platform) {
