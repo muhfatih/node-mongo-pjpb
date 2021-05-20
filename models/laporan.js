@@ -13,5 +13,5 @@ const laporanSchema = new schema({
     datetime : String,
 })
 
-const laporan = mongoose.model("laporan", laporanSchema, "laporan")
-module.exports = laporan
+const Laporan = mongoose.model("Laporan", laporanSchema, "laporan")
+module.exports = Laporan

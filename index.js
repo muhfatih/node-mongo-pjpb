@@ -61,3 +61,28 @@ app.post('/buat-laporan', async (req,res) => {
     const result = await lapor.save();
     return res.send(result);
 })
+
+//read by laporan id
+app.get('/laporan/:id_laporan', async (req,res)=>{
+    const{id_laporan} = req.params;
+    const laporan = await Laporan.findById(id_laporan);
+    return res.send(laporan)
+})
+
+//read laporan
+app.get('/laporan', async (req,res)=>{
+    const laporans = await Laporan.find();
+    return res.send(laporans);
+})
+
+//delete laporan
+app.delete('/laporan-delete', async (req,res)=>{
+    const {id} = req.body;
+    const laporanDelete = await Laporan.findByIdAndDelete(id);
+    return res.send(laporanDelete);
+})
+
+//update laporan
+app.patch('/laporan-update', (req,res)=>{
+    const {id,id_laporan} = req.body;
+})
