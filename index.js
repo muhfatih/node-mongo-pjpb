@@ -42,7 +42,7 @@ async function verify(token,platform) {
 // })
 
 app.get('/',(req,res)=>{
-    res.send("API LAPOR")
+    return res.json({test:"Hello"})
 })
 
 //create laporan
