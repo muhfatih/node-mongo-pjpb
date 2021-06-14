@@ -13,7 +13,7 @@ async function CheckAuth(req, res, next) {
     const client = platform === "ANDROID"?clientAndroid : clientIOS
     const ticket = await client.verifyIdToken({
         idToken: token,
-        audience: [CLIENT_ID_ANDROID,CLIENT_ID_IOS],
+        audience: [process.env.CLIENT_ID_ANDROID,process.env.CLIENT_ID_IOS],
     }).catch(err => {
         console.log("INVALID TOKEN : ", err);
         return null
