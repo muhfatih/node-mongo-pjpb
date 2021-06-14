@@ -72,13 +72,13 @@ app.get('/laporan', async (req,res)=>{
 })
 
 //delete laporan
-app.delete('/laporan-delete', async (req,res)=>{
+app.delete('/laporan-delete', CheckAuth, async (req,res)=>{
     const {id} = req.body;
     const laporanDelete = await Laporan.findByIdAndDelete(id);
     return res.send(laporanDelete);
 })
 
 //update laporan
-app.patch('/laporan-update', (req,res)=>{
+app.patch('/laporan-update', CheckAuth, (req,res)=>{
     const {id,id_laporan} = req.body;
 })

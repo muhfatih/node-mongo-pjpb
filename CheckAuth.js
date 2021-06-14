@@ -5,23 +5,27 @@ const clientIOS = new OAuth2Client(process.env.CLIENT_ID_IOS);
 
 
 async function CheckAuth(req, res, next) {
-    const {platform} = req.body;
-    const { authorization } = req.headers;
-    if (!authorization) return res.sendStatus(400);
+    const { authorization, platform } = req.headers;
+    if (!authorization || !platform) return res.sendStatus(400);
+    // console.log(authorization);
+    /*
+        headers : {
+            authorization : Bearer lakksdlkjalkaldjkaljsdkljadlsadjsaldasd
+        }
+    */
     const token = authorization.split(" ")[1];
+    // console.log(token);
     if(!token) return res.sendStatus(400);
-    const client = platform === "ANDROID"?clientAndroid : clientIOS
-    const ticket = await client.verifyIdToken({
+    const client = platform.toUppercase() === "ANDROID"?clientAndroid : clientIOS
+    const user = await client.verifyIdToken({
         idToken: token,
         audience: [process.env.CLIENT_ID_ANDROID,process.env.CLIENT_ID_IOS],
     }).catch(err => {
         console.log("INVALID TOKEN : ", err);
         return null
     });
-    if(!ticket) return res.sendStatus(403);
-    const payload = ticket.getPayload();
-    // If request specified a G Suite domain:
-    // const domain = payload['hd'];
+    if(!user) return res.sendStatus(403);
+    const payload = user.getPayload();
     req.payload = payload
     next();
 }
